@@ -27,6 +27,23 @@ namespace App.UILayer.Models
                 });
 
             return taskInvoke;
+            
+          /* var taskInvoke = Task<ApplicationUser>.Factory.StartNew(() =>
+            {
+                var userInfo = _loginService.GetUserInfo(authenticationToken);
+                if ((userInfo != null) && (userInfo.UserId.ToUpper() == userName.ToUpper()) && !string.IsNullOrEmpty(userInfo.Roles))
+                {
+                    return new ApplicationUser()
+                    {
+                        Id = userInfo.UserId,
+                        UserName = userInfo.UserId,
+                        Roles = userInfo.Roles.Split(',').Select(p => p.ToUpper()).ToArray(),
+                    };
+                }
+                return null;
+            });
+
+            return taskInvoke;  */          
         }
     }
 }
