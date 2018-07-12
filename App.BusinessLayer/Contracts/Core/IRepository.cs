@@ -11,6 +11,8 @@ namespace App.BusinessLayer.Contracts.Core
 
         void Update<T>(T entity) where T : class;
 
+        void Update<T>(ICollection<T> entities) where T : class;
+
         void Delete<T>(T entity) where T : class;
 
         void DeleteBy<T>(params object[] keyValues) where T : class;
@@ -19,7 +21,9 @@ namespace App.BusinessLayer.Contracts.Core
 
         T GetBy<T>(params object[] keyValues) where T : class;
 
-        void Commit();
+        // void Commit(); Wrong
+
+        IUnityOfWork UoW { get; }
 
     }
 }

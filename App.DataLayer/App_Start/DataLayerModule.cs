@@ -9,7 +9,6 @@
 
 using App.DataLayer.Contexts;
 using Autofac;
-//using App.Data.Model;
 
 namespace App.DataLayer
 {

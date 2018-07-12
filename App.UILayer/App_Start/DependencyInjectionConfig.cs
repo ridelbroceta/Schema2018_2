@@ -72,7 +72,7 @@ namespace App.UILayer
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             ////this is the manager of the components important
-            //builder.RegisterAssemblyTypes(typeof(IManager).Assembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof(IManager).Assembly).AsImplementedInterfaces();
 
             ////Register service layer: autowire all 
             //builder.RegisterAssemblyTypes(GetType().Assembly).AsImplementedInterfaces();

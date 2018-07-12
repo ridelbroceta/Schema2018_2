@@ -11,5 +11,11 @@ namespace App.BusinessLayer.Behaviors.WriteServices
         public WriteTestService(IRepository repository) : base(repository)
         {
         }
+
+        public void Add()
+        {
+            //Repository.Add();
+            //
+        }
     }
 }

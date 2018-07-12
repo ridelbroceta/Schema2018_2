@@ -4,17 +4,18 @@ namespace App.BusinessLayer.Behaviors.Core
 {
     public class WriteGenericService : IWriteGenericService
     {
-        private readonly IRepository _repository;
+        protected readonly IRepository Repository;
 
         public WriteGenericService(IRepository repository)
         {
-            _repository = repository;
+            Repository = repository;
         }
 
         public void DeleteBy<T>(params object[] keyValues) where T : class
         {
-            _repository.DeleteBy<T>(keyValues);
-            _repository.Commit();
+            var unityOfW = Repository.UoW;
+            Repository.DeleteBy<T>(keyValues);
+            unityOfW.Save();
         }
     }
 }

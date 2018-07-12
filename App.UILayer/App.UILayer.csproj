@@ -234,6 +234,7 @@
     <Compile Include="Infrastructure\HttpConfigurationExtensions.cs" />
     <Compile Include="Infrastructure\InjectAttribute.cs" />
     <Compile Include="Infrastructure\InjectParameterBinding.cs" />
+    <Compile Include="Infrastructure\Manager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\CustomUserManager.cs" />

@@ -6,7 +6,7 @@ using App.BusinessLayer.Contracts.Core;
 
 namespace App.DataLayer.Contexts
 {
-    public class MainDbContext : DbContext
+    public partial class MainDbContext : DbContext
     {
 
         public MainDbContext() : base("name=MainDbContext")

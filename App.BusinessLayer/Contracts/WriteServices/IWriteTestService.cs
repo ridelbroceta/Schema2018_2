@@ -1,9 +1,11 @@
-﻿namespace App.BusinessLayer.Contracts.WriteServices
+﻿
+
+namespace App.BusinessLayer.Contracts.WriteServices
 {
     //not for Entity, not Generic
 
     public interface IWriteTestService
     {
-         
+        void Add();
     }
 }

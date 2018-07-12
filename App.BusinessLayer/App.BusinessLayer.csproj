@@ -53,6 +53,7 @@
     <Compile Include="Contracts\Core\IReadGenericService.cs" />
     <Compile Include="Contracts\Core\IRepository.cs" />
     <Compile Include="Contracts\Core\ITrackable.cs" />
+    <Compile Include="Contracts\Core\IUnityOfWork.cs" />
     <Compile Include="Contracts\Core\IWriteGenericService.cs" />
     <Compile Include="Contracts\Core\ReadGenericService.cs" />
     <Compile Include="Contracts\Repositories\IEntityTestRepository.cs" />

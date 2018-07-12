@@ -6,7 +6,7 @@ using App.DataLayer.Core;
 
 namespace App.DataLayer.Repositories
 {
-    public class EntityTestRepository : GenericRepository, IEntityTestRepository
+    public class EntityTestRepository : EntityRepository<EntityTest>, IEntityTestRepository
     {
         public EntityTestRepository(MainDbContext dbContext) : base(dbContext)
         {

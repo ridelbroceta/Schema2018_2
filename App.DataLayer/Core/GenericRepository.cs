@@ -5,16 +5,39 @@ using App.DataLayer.Contexts;
 
 namespace App.DataLayer.Core
 {
-    public class GenericRepository : IRepository
+
+    public class RootRepository
     {
         protected readonly MainDbContext Db;
 
-        public GenericRepository(MainDbContext dbContext)
+        public RootRepository(MainDbContext dbContext)
         {
             //…          //set internal values         
             Db = dbContext;
         }
+    }
 
+    public class EntityRepository<TEntity> : RootRepository where TEntity : class 
+    {
+
+        protected IEnumerable<TEntity> GetSet()
+        {
+            return Db.Set<TEntity>();
+        }
+
+        protected TEntity GetBy(params object[] keyValues) 
+        {
+            return Db.Set<TEntity>().Find(keyValues);
+        }
+
+        public EntityRepository(MainDbContext dbContext) : base(dbContext)
+        {
+        }
+    }
+
+    public sealed class GenericRepository : RootRepository, IRepository
+    {
+       
         public void Add<T>(T entity) where T : class
         {
             Db.Set<T>().Add(entity);
@@ -32,6 +55,19 @@ namespace App.DataLayer.Core
                 Db.Set<T>().Attach(entity);
             }
             Db.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Update<T>(ICollection<T> entities) where T : class
+        {
+            foreach (var item in entities)
+            {
+                if (Db.Entry(item).State == EntityState.Detached)
+                {
+                    Db.Set<T>().Attach(item);
+                }
+                Db.Entry(item).State = EntityState.Modified;
+
+            }
         }
 
         public void Delete<T>(T entity) where T : class
@@ -56,10 +92,18 @@ namespace App.DataLayer.Core
             return Db.Set<T>().Find(keyValues);
         }
 
-        public void Commit()
+        public IUnityOfWork UoW
         {
-            Db.SaveChanges();
+            get { return Db as IUnityOfWork; }
         }
 
+        //public void Commit()  //Wrong
+        //{
+        //    Db.SaveChanges();
+        //}
+
+        public GenericRepository(MainDbContext dbContext) : base(dbContext)
+        {
+        }
     }
 }
