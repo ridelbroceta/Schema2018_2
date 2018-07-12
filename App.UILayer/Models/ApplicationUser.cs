@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 
+
 namespace App.UILayer.Models
 {     
     public class ApplicationUser : /*IIdentity, IPrincipal, */IUser 
@@ -7,9 +8,12 @@ namespace App.UILayer.Models
 
         //http://benfoster.io/blog/asp-net-identity-role-claims
 
-
+        /*base*/
         public string Id { get; set; }
         public string UserName { get; set; }
+        /*base*/
+
+
         public string[] Roles { get; set; }
         public int DeptSeq { get; set; }
 
