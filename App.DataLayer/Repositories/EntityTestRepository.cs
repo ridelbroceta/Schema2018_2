@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using App.BusinessLayer.Contracts.Repositories;
 using App.BusinessLayer.Domain;
 using App.DataLayer.Contexts;
@@ -12,7 +12,7 @@ namespace App.DataLayer.Repositories
         {
         }
 
-        public IEnumerable<EntityTest> GetAllWithInclude()
+        public IQueryable<EntityTest> GetAllByYearInclude(int year)
         {
             throw new System.NotImplementedException();
         }

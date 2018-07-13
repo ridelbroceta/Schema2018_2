@@ -47,17 +47,15 @@
   <ItemGroup>
     <Compile Include="App_Start\BusinessLayerModule.cs" />
     <Compile Include="Behaviors\Constraints\TestConstraint.cs" />
-    <Compile Include="Behaviors\Core\WriteGenericService.cs" />
-    <Compile Include="Behaviors\WriteServices\WriteTestService.cs" />
+    <Compile Include="Behaviors\ReadServices\ReadEntityTestService.cs" />
+    <Compile Include="Behaviors\WriteServices\WriteEntityTestService.cs" />
     <Compile Include="Contracts\Constraints\ITestConstraint.cs" />
-    <Compile Include="Contracts\Core\IReadGenericService.cs" />
-    <Compile Include="Contracts\Core\IRepository.cs" />
+    <Compile Include="Contracts\Core\Repositories.cs" />
     <Compile Include="Contracts\Core\ITrackable.cs" />
     <Compile Include="Contracts\Core\IUnityOfWork.cs" />
-    <Compile Include="Contracts\Core\IWriteGenericService.cs" />
-    <Compile Include="Contracts\Core\ReadGenericService.cs" />
+    <Compile Include="Contracts\ReadServices\IReadEntityTestService.cs" />
     <Compile Include="Contracts\Repositories\IEntityTestRepository.cs" />
-    <Compile Include="Contracts\WriteServices\IWriteTestService.cs" />
+    <Compile Include="Contracts\WriteServices\IWriteEntityTestService.cs" />
     <Compile Include="Domain\Base.cs" />
     <Compile Include="Domain\EntityTest.cs" />
     <Compile Include="GobalHelpers\Helpers.cs" />

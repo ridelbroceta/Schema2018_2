@@ -50,7 +50,7 @@
     <Compile Include="App_Start\DataLayerModule.cs" />
     <Compile Include="Contexts\MainDbContextPartial.cs" />
     <Compile Include="Contexts\MainDbContext.cs" />
-    <Compile Include="Core\GenericRepository.cs" />
+    <Compile Include="Core\Repositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntityTestRepository.cs" />
   </ItemGroup>

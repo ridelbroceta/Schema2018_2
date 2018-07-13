@@ -6,36 +6,84 @@ using App.DataLayer.Contexts;
 namespace App.DataLayer.Core
 {
 
-    public class RootRepository
+    public abstract class RootRepository
     {
         protected readonly MainDbContext Db;
 
-        public RootRepository(MainDbContext dbContext)
+        protected RootRepository(MainDbContext dbContext)
         {
             //…          //set internal values         
             Db = dbContext;
         }
+
+        public IUnityOfWork UoW
+        {
+            get { return Db as IUnityOfWork; }
+        }
     }
 
-    public class EntityRepository<TEntity> : RootRepository where TEntity : class 
+    public abstract class EntityRepository<T> : RootRepository, IEntityRepository<T> where T : class 
     {
-
-        protected IEnumerable<TEntity> GetSet()
+        public void Add(T entity)
         {
-            return Db.Set<TEntity>();
+            Db.Set<T>().Add(entity);
         }
 
-        protected TEntity GetBy(params object[] keyValues) 
+        public void AddRange(IEnumerable<T> entities)
         {
-            return Db.Set<TEntity>().Find(keyValues);
+            Db.Set<T>().AddRange(entities);
         }
 
-        public EntityRepository(MainDbContext dbContext) : base(dbContext)
+        public void Update(T entity)
+        {
+            if (Db.Entry(entity).State == EntityState.Detached)
+            {
+                Db.Set<T>().Attach(entity);
+            }
+            Db.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Update(ICollection<T> entities)
+        {
+            foreach (var item in entities)
+            {
+                if (Db.Entry(item).State == EntityState.Detached)
+                {
+                    Db.Set<T>().Attach(item);
+                }
+                Db.Entry(item).State = EntityState.Modified;
+
+            }
+        }
+
+        public void Delete(T entity)
+        {
+            Db.Set<T>().Remove(entity);
+        }
+
+        public void DeleteBy(params object[] keyValues)
+        {
+            var entity = Db.Set<T>().Find(keyValues);
+            if (entity != null)
+                Db.Set<T>().Remove(entity);
+        }
+
+        public IEnumerable<T> GetSet()
+        {
+            return Db.Set<T>();
+        }
+
+        public T GetBy(params object[] keyValues) 
+        {
+            return Db.Set<T>().Find(keyValues);
+        }
+
+        protected EntityRepository(MainDbContext dbContext) : base(dbContext)
         {
         }
     }
 
-    public sealed class GenericRepository : RootRepository, IRepository
+    public sealed class GenericRepository : RootRepository, IGenericRepository
     {
        
         public void Add<T>(T entity) where T : class
@@ -90,11 +138,6 @@ namespace App.DataLayer.Core
         public T GetBy<T>(params object[] keyValues) where T : class
         {
             return Db.Set<T>().Find(keyValues);
-        }
-
-        public IUnityOfWork UoW
-        {
-            get { return Db as IUnityOfWork; }
         }
 
         //public void Commit()  //Wrong

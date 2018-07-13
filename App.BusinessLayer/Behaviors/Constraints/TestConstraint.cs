@@ -5,11 +5,11 @@ namespace App.BusinessLayer.Behaviors.Constraints
 {
     public class TestConstraint :ITestConstraint
     {
-        private readonly IRepository _repository;
+        private readonly IGenericRepository _genericRepository;
 
-        public TestConstraint(IRepository repository)
+        public TestConstraint(IGenericRepository genericRepository)
         {
-            _repository = repository;
+            _genericRepository = genericRepository;
         }
     }
 }
