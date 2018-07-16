@@ -23,12 +23,18 @@ namespace App.UILayer
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
+                     "~/Scripts/toastr.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/appscripts").Include(
-                                  "~/Scripts/outScriptsDir/app.js"));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                        "~/Content/bootstrap.css",
+                        "~/Content/toastr.css",
+                        "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/my-scripts-base").Include("~/Scripts/outScriptsDir/my-toastr-tools.js",
+                       "~/Scripts/outScriptsDir/my-window-modal.js", "~/Scripts/outScriptsDir/ajax-service.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/appscripts").Include("~/Scripts/outScriptsDir/Home/dashboard.onload.js", "~/Scripts/outScriptsDir/Home/home.js"));
         }
     }
 }
