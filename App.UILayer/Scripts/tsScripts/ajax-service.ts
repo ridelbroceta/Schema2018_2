@@ -1,6 +1,6 @@
 ﻿/// <reference path="my-toastr-tools.ts" />
 
-module Ajax {
+namespace  Ajax {
     export class Options {
         url: string;
         method: string;

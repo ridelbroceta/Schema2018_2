@@ -2,7 +2,7 @@
 /// <reference path="../typings/bootstrap/index.d.ts" />
 /// <reference path="ajax-service.ts" />
 
-module Tools {
+namespace Tools{
 
     export interface IModalButton {
         id: string;
@@ -82,42 +82,7 @@ module Tools {
                 );
             }
 
-            //$('#' + placementId + '').find('.modal-dialog').draggable({
-            //    handle: ".modal-header"
-            //});
-
-            $('#' + placementId + '').find("#" + id).on('shown.bs.modal', function () {
-
-                $(this).find("[autofocus]:first").focus();
-            });
-
-            //$('#' + placementId + '').find('.modal').css('margin-top', (Math.floor((window.innerHeight - $('#' + placementId + '').find('.modal')[0].offsetHeight) / 2) + 'px'));
-
-            //$('#' + placementId + '').find("#" + id).on('loaded.bs.modal', function () {
-            //    $(this).find('.modal-dialog').css({
-            //        'margin-top': function () {
-            //            return (($(window).outerHeight() / 2) - ($(this).outerHeight() / 2));
-            //        }
-            //    });
-            //});
-            //$(window).on('show', function () {
-            //    $('focus').focus();
-            //});
-
-            //// Reposition when a modal is shown
-            //$('.modal').on('show.bs.modal', reposition);
-            // Reposition when the window is resized
-            //$(window).on('resize', function () {
-            //    //$('.modal:visible').each(reposition);
-            //    if ($(window).width() <= width) {
-            //        $('#' + placementId + '').find('.modal-dialog').css({ width: "auto" });
-            //    } else {
-            //        $('#' + placementId + '').find('.modal-dialog').css({ width: width });
-            //    }
-            //});
-
-            //if (preventDefault != null && preventDefault) event.preventDefault();
-            //if (stopPropagation != null && stopPropagation) event.stopPropagation();
+         
         }
 
     }

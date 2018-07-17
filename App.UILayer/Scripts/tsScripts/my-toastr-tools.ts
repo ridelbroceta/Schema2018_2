@@ -1,5 +1,5 @@
 ﻿/// <reference path="../typings/toastr/toastr.d.ts" />
-module Tools {
+namespace  Tools {
 
     export enum ToastrTypeEnum {
         Success,
